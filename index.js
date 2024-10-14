@@ -30,7 +30,7 @@ function updateEntriesTable() {
             <td>${entry.email}</td>
             <td>${entry.dob}</td>
             <td>${entry.password}</td>
-            <td>${entry.acceptedTerms ? 'True' : 'False'}</td>
+            <td>${entry.acceptedTerms ? 'true' : 'false'}</td>
         `;
         tbody.appendChild(row);
     });
