@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajay Vikhram's wd101 GDC AI Workforce Capstone Project</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        input#name:invalid:focus{
+            border: 1px solid red;
+        }
+    </style>
 </head>
 <body>
     <!--Written by Ajay Vikhram S M for the wd101 Capstone Project Submission-->
@@ -16,7 +21,7 @@
             <input type="text" id="name" required>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+            <input type="email" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
 
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" required min="1969-01-01" max="2006-12-31">
