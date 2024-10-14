@@ -35,3 +35,7 @@ function updateEntriesTable() {
         tbody.appendChild(row);
     });
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+    updateEntriesTable();
+});
