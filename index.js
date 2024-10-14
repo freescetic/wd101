@@ -7,11 +7,6 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     const password = document.getElementById('password').value;
     const acceptedTerms = document.getElementById('terms').checked;
 
-    if (!validateEmail(email)) {
-        displayError('Invalid email address!');
-        return;
-    }
-
     const entry = { name, email, dob, password, acceptedTerms };
     let entries = JSON.parse(sessionStorage.getItem('entries')) || [];
     entries.push(entry);
@@ -21,16 +16,6 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
 
     updateEntriesTable();
 });
-
-function displayError(message) {
-  const errorContainer = document.getElementById('error-msg');
-  errorContainer.textContent = message;
-}
-
-function validateEmail(email) {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return emailRegex.test(email);
-}
 
 function updateEntriesTable() {
     const entries = JSON.parse(sessionStorage.getItem('entries')) || [];
