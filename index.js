@@ -1,5 +1,5 @@
 document.getElementById('signupForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
@@ -7,6 +7,10 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     const password = document.getElementById('password').value;
     const acceptedTerms = document.getElementById('terms').checked;
 
+    if (!validateEmail(email)) {
+        alert('Invalid email address!');
+        return;
+    }
 
     const entry = { name, email, dob, password, acceptedTerms };
     let entries = JSON.parse(sessionStorage.getItem('entries')) || [];
@@ -18,10 +22,15 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     updateEntriesTable();
 });
 
+function validateEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailRegex.test(email);
+}
+
 function updateEntriesTable() {
     const entries = JSON.parse(sessionStorage.getItem('entries')) || [];
     const tbody = document.querySelector('#entriesTable tbody');
-    tbody.innerHTML = ''; 
+    tbody.innerHTML = '';
 
     entries.forEach(entry => {
         const row = document.createElement('tr');
