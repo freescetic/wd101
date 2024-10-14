@@ -8,7 +8,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     const acceptedTerms = document.getElementById('terms').checked;
 
     if (!validateEmail(email)) {
-        alert('Invalid email address!');
+        displayError('Invalid email address!');
         return;
     }
 
@@ -21,6 +21,11 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
 
     updateEntriesTable();
 });
+
+function displayError(message) {
+  const errorContainer = document.getElementById('error-msg');
+  errorContainer.textContent = message;
+}
 
 function validateEmail(email) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
